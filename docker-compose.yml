@@ -1,0 +1,48 @@
+version: '3.7'
+
+volumes:
+    db_data: {}
+    db_test_data: {}
+
+services:
+    php:
+        image: cyradin/php-roadrunner:7.4-latest
+        environment:
+            WAIT_FOR_HOST: postgres
+            WAIT_FOR_PORT: 5432
+            WAIT_FOR_TIMEOUT: 30
+            DEV_MODE: 0
+        restart: always
+        volumes:
+            - .:/srv:rw
+        networks:
+            auth:
+            f1monkey:
+                aliases:
+                    - f1monkey-php
+    postgres:
+        image: postgres:12.3-alpine
+        environment:
+            POSTGRES_DB: eve_characters
+            POSTGRES_USER: user
+            POSTGRES_PASSWORD: password
+        volumes:
+            - "db_data:/var/lib/postgresql/data"
+        networks:
+            auth:
+
+    postgres_test:
+        image: postgres:12.3-alpine
+        environment:
+            POSTGRES_DB: eve_characters_test
+            POSTGRES_USER: user
+            POSTGRES_PASSWORD: password
+        volumes:
+            - "db_test_data:/var/lib/postgresql/data"
+        networks:
+            auth:
+
+networks:
+    f1monkey:
+        external: true
+    auth:

@@ -1,0 +1,23 @@
+security:
+    encoders:
+        App\Entity\User:
+            id: App\Service\Security\NoPasswordEncoder
+    providers:
+        users:
+            entity:
+                class: App\Entity\User
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        doc:
+            security: false
+            pattern: ^/v\d+/doc
+        v1_api:
+            pattern: ^/v1
+            stateless: true
+            guard:
+                authenticators:
+                    - App\Service\Security\JwtAuthenticator
+    access_control:
+        - { path: ^/v1, roles: IS_AUTHENTICATED_FULLY }

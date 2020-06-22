@@ -1,0 +1,39 @@
+###> symfony/framework-bundle ###
+/.env.local
+/.env.local.php
+/.env.*.local
+/config/secrets/prod/prod.decrypt.private.php
+/public/bundles/
+/var/
+/vendor/
+###< symfony/framework-bundle ###
+
+# IDE files
+.idea/*
+!.idea/codeStyles
+!.idea/fileTemplates
+!.idea/inspectionProfiles
+!.idea/symfony2.xml
+!.idea/php.xml
+!.idea/sqldialects.xml
+# RoadRunner binary
+/bin/rr
+
+# RSA keys for JWT
+config/jwt/*
+!config/jwt/.gitignore
+!config/jwt/private_test.pem
+!config/jwt/public_test.pem
+
+docker-compose.override.yml
+
+###> phpunit/phpunit ###
+/phpunit.xml
+.phpunit.result.cache
+###< phpunit/phpunit ###
+
+###> symfony/phpunit-bridge ###
+.phpunit
+.phpunit.result.cache
+/phpunit.xml
+###< symfony/phpunit-bridge ###

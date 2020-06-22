@@ -1,0 +1,23 @@
+actor: IntegrationTester
+modules:
+    enabled:
+        -   Symfony:
+                app_path: 'src'
+                environment: 'test'
+                kernel_class: 'App\Kernel'
+        -   Db:
+                dsn: 'pgsql:host=postgres_test;dbname=eve_characters_test'
+                user: 'user'
+                password: 'password'
+                populate: false
+                cleanup: false
+                reconnect: true
+                waitlock: 10
+        - Cli
+        - \Helper\Integration
+extensions:
+    enabled:
+    -   \F1Monkey\Codeception\Extension\SymfonyClearCacheExtension:
+            cache_pools: []
+    -   \F1Monkey\Codeception\Extension\DoctrineDatabaseInitializeExtension:
+            pg_uuid_extension: true # load "uuid-ossp" postgres-extension
