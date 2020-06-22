@@ -1,4 +1,4 @@
-# auth
+# eve-characters
 ![](https://github.com/f1monkey/eve-characters/workflows/Tests/badge.svg) ![](https://img.shields.io/github/v/tag/f1monkey/eve-characters)
 
 Character list microservice based on RoadRunner and Symfony.
