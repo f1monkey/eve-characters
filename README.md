@@ -21,6 +21,7 @@ $ docker-compose up -d
 ```
 $ docker-compose exec php bash
 ```
+* Copy `config/jwt/public.pem` from [auth](https://github.com/f1monkey/auth) service to `config/jwt` folder
 ## Testing
 Run static analyse
 ```

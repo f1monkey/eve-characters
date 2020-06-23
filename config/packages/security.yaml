@@ -1,11 +1,7 @@
 security:
-    encoders:
-        App\Entity\User:
-            id: App\Service\Security\NoPasswordEncoder
     providers:
         users:
-            entity:
-                class: App\Entity\User
+            id: App\Service\Security\JwtUserProvider
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -18,6 +14,6 @@ security:
             stateless: true
             guard:
                 authenticators:
-                    - App\Service\Security\JwtAuthenticator
+                    - lexik_jwt_authentication.jwt_token_authenticator
     access_control:
         - { path: ^/v1, roles: IS_AUTHENTICATED_FULLY }
