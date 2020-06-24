@@ -153,6 +153,9 @@
     "f1monkey/codeception-ext": {
         "version": "1.0.0"
     },
+    "f1monkey/eve-esi-bundle": {
+        "version": "dev-master"
+    },
     "f1monkey/monolog-extensions": {
         "version": "1.0.0"
     },
@@ -361,6 +364,9 @@
     },
     "ralouphie/getallheaders": {
         "version": "3.0.3"
+    },
+    "sabre/uri": {
+        "version": "2.2.0"
     },
     "sebastian/code-unit": {
         "version": "1.0.3"

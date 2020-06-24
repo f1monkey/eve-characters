@@ -14,4 +14,5 @@ return [
     Symfony\Bundle\MonologBundle\MonologBundle::class => ['all' => true],
     F1Monkey\RequestHandleBundle\RequestHandleBundle::class => ['all' => true],
     Lexik\Bundle\JWTAuthenticationBundle\LexikJWTAuthenticationBundle::class => ['all' => true],
+    F1Monkey\EveEsiBundle\F1MonkeyEveEsiBundle::class => ['all' => true],
 ];
