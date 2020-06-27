@@ -29,12 +29,19 @@ class CharacterToken
      *
      * @ORM\Column(type="string", length=255, nullable=false)
      */
+    private string $username;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=1024, nullable=false)
+     */
     private string $accessToken;
 
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=255, nullable=false)
+     * @ORM\Column(type="string", length=1024, nullable=false)
      */
     private string $refreshToken;
 
@@ -59,6 +66,26 @@ class CharacterToken
     public function getId(): ?string
     {
         return $this->id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUsername(): string
+    {
+        return $this->username;
+    }
+
+    /**
+     * @param string $username
+     *
+     * @return CharacterToken
+     */
+    public function setUsername(string $username): CharacterToken
+    {
+        $this->username = $username;
+
+        return $this;
     }
 
     /**
