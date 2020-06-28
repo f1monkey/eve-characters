@@ -20,6 +20,11 @@ class OAuthServiceMock implements OAuthServiceInterface
     public const INVALID_SCOPE = 'invalid-scope';
 
     /**
+     * @var TokenResponse|null
+     */
+    protected ?TokenResponse $response;
+
+    /**
      * Generate URL to redirect user for authentication
      *
      * @param Collection<int, Scope> $scopes
@@ -51,10 +56,7 @@ class OAuthServiceMock implements OAuthServiceInterface
      */
     public function verifyCode(string $authorizationCode): TokenResponse
     {
-        return (new TokenResponse())->setTokenType('tokenType')
-                                    ->setExpiresIn(1200)
-                                    ->setAccessToken('accessToken_' . uniqid())
-                                    ->setRefreshToken('refreshToken_' . uniqid());
+        return $this->response ?? $this->generateResponse();
     }
 
     /**
@@ -65,6 +67,26 @@ class OAuthServiceMock implements OAuthServiceInterface
      * @return TokenResponse
      */
     public function refreshToken(string $refreshToken): TokenResponse
+    {
+        return $this->response ?? $this->generateResponse();
+    }
+
+    /**
+     * @param TokenResponse|null $response
+     *
+     * @return OAuthServiceMock
+     */
+    public function setResponse(?TokenResponse $response): OAuthServiceMock
+    {
+        $this->response = $response;
+
+        return $this;
+    }
+
+    /**
+     * @return TokenResponse
+     */
+    public function generateResponse(): TokenResponse
     {
         return (new TokenResponse())->setTokenType('tokenType')
                                     ->setExpiresIn(1200)
