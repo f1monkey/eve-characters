@@ -11,6 +11,9 @@
     "behat/gherkin": {
         "version": "v4.6.2"
     },
+    "brick/math": {
+        "version": "0.8.15"
+    },
     "codeception/codeception": {
         "version": "2.3",
         "recipe": {
@@ -152,6 +155,9 @@
     },
     "f1monkey/codeception-ext": {
         "version": "1.0.0"
+    },
+    "f1monkey/eve-esi-bundle": {
+        "version": "dev-master"
     },
     "f1monkey/monolog-extensions": {
         "version": "1.0.0"
@@ -362,6 +368,15 @@
     "ralouphie/getallheaders": {
         "version": "3.0.3"
     },
+    "ramsey/collection": {
+        "version": "1.0.1"
+    },
+    "ramsey/uuid": {
+        "version": "4.0.1"
+    },
+    "sabre/uri": {
+        "version": "2.2.0"
+    },
     "sebastian/code-unit": {
         "version": "1.0.3"
     },
@@ -436,6 +451,18 @@
     },
     "symfony/css-selector": {
         "version": "v5.1.2"
+    },
+    "symfony/debug-bundle": {
+        "version": "4.1",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "4.1",
+            "ref": "f8863cbad2f2e58c4b65fa1eac892ab189971bea"
+        },
+        "files": [
+            "config/packages/dev/debug.yaml"
+        ]
     },
     "symfony/dependency-injection": {
         "version": "v5.1.2"

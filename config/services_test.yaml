@@ -5,3 +5,6 @@ services:
         autowire: true
         autoconfigure: true
         public: true
+
+    test.access_token_service:
+        alias: App\Service\Character\AccessTokenServiceInterface

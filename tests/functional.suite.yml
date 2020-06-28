@@ -9,6 +9,7 @@ modules:
                 app_path: 'src'
                 environment: 'test'
                 kernel_class: 'App\Kernel'
+                rebootable_client: false
         -   Db:
                 dsn: 'pgsql:host=postgres_test;dbname=eve_characters_test'
                 user: 'user'

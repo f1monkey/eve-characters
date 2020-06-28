@@ -4,6 +4,8 @@ namespace Helper;
 // here you can define custom actions
 // all public methods declared in helper class will be available in $I
 
+use App\Tests\_support\Helper\CreateCharacterTokenTrait;
+use App\Tests\_support\Helper\CreateCharacterTrait;
 use App\Tests\_support\Helper\ParameterGrabberTrait;
 use App\Tests\_support\Helper\RepositoryTrait;
 
@@ -11,4 +13,6 @@ class Functional extends \Codeception\Module
 {
     use RepositoryTrait;
     use ParameterGrabberTrait;
+    use CreateCharacterTrait;
+    use CreateCharacterTokenTrait;
 }
