@@ -17,6 +17,15 @@ cp docker-compose.override.yml.dist docker-compose.override.yml
 ```
 $ docker-compose up -d
 ```
+
+* Add client id, client secret and callback url of [your application](https://developers.eveonline.com/applications) to `.env.local`:
+```yaml
+EVE_ESI_CALLBACK_URL=http://localhost:8081/callback
+EVE_ESI_CLIENT_ID=qwerty
+EVE_ESI_CLIENT_SECRET=X9eHaXdUq9A9uesqhBP5fwQcnrS6Mkcy5H110Hirqwerty
+```
+
+
 * Connect to php container
 ```
 $ docker-compose exec php bash
