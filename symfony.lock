@@ -11,6 +11,9 @@
     "behat/gherkin": {
         "version": "v4.6.2"
     },
+    "brick/math": {
+        "version": "0.8.15"
+    },
     "codeception/codeception": {
         "version": "2.3",
         "recipe": {
@@ -364,6 +367,12 @@
     },
     "ralouphie/getallheaders": {
         "version": "3.0.3"
+    },
+    "ramsey/collection": {
+        "version": "1.0.1"
+    },
+    "ramsey/uuid": {
+        "version": "4.0.1"
     },
     "sabre/uri": {
         "version": "2.2.0"

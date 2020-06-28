@@ -46,6 +46,7 @@
         "codeception/module-symfony": "^1.1",
         "doctrine/doctrine-fixtures-bundle": "^3.3",
         "phpstan/phpstan": "^0.12.29",
+        "ramsey/uuid": "^4.0",
         "symfony/debug-bundle": "5.1.*",
         "symfony/maker-bundle": "^1.19"
     },
@@ -85,7 +86,9 @@
         ],
         "post-update-cmd": [
             "@auto-scripts"
-        ]
+        ],
+        "test": "vendor/bin/codecept run",
+        "phpstan": "vendor/bin/phpstan analyze src --level max"
     },
     "conflict": {
         "symfony/symfony": "*"
@@ -95,9 +98,5 @@
             "allow-contrib": false,
             "require": "5.1.*"
         }
-    },
-    "scripts": {
-        "test": "vendor/bin/codecept run",
-        "phpstan": "vendor/bin/phpstan analyze src --level max"
     }
 }

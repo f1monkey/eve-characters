@@ -110,7 +110,7 @@ class AccessTokenServiceTest extends Unit
         );
         /** @var VerifyTokenServiceInterface $verifyTokenService */
         $verifyTokenService = $this->makeEmpty(VerifyTokenServiceInterface::class);
-        $expected = new CharacterToken();
+        $expected = (new CharacterToken())->setRefreshToken('qwerty');
         /** @var CharacterTokenManagerInterface $manager */
         $manager = $this->makeEmpty(CharacterTokenManagerInterface::class, [
             'getByUserAndCharacter' => $expected,

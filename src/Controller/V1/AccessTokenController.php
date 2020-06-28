@@ -4,9 +4,11 @@ declare(strict_types=1);
 namespace App\Controller\V1;
 
 use App\Dto\Api\V1\Request\AccessToken\GetRedirectUrlRequest;
+use App\Dto\Api\V1\Request\AccessToken\RefreshTokenRequest;
 use App\Dto\Api\V1\Request\AccessToken\VerifyCodeRequest;
 use App\Dto\Api\V1\Response\AccessToken\AccessTokenResponse;
 use App\Dto\Api\V1\Response\AccessToken\GetRedirectUrlResponse;
+use App\Exception\Entity\EntityNotFoundException;
 use App\Factory\Api\V1\AccessTokenResponseFactoryInterface;
 use App\Service\Character\AccessTokenServiceInterface;
 use F1monkey\EveEsiBundle\Exception\ApiClient\ApiClientExceptionInterface;
@@ -21,6 +23,7 @@ use Swagger\Annotations as SWG;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -169,5 +172,70 @@ class AccessTokenController
         $response = $this->responseFactory->createAccessTokenResponse($result);
 
         return $this->createJsonResponse($response);
+    }
+
+    /**
+     * Refresh access token for character
+     *
+     * @Route("/refresh-token", name="refresh_token", methods={Request::METHOD_POST})
+     *
+     * @SWG\Parameter(
+     *     in="header",
+     *     name="Authorization",
+     *     description="Authorization header",
+     *     type="string",
+     *     required=true
+     * )
+     * @SWG\Parameter(
+     *     in="body",
+     *     name="body",
+     *     description="Request data",
+     *     @Model(type=RefreshTokenRequest::class)
+     * )
+     * @SWG\Response(
+     *     response=Response::HTTP_OK,
+     *     description="Access token",
+     *     @Model(type=AccessTokenResponse::class)
+     * )
+     * @SWG\Response(
+     *     response=Response::HTTP_BAD_REQUEST,
+     *     description="Bad Request",
+     *     @Model(type=ErrorResponse::class)
+     * )
+     * @SWG\Response(
+     *     response=Response::HTTP_UNAUTHORIZED,
+     *     description="Unauthorized",
+     *     @Model(type=ErrorResponse::class)
+     * )
+     * @SWG\Response(
+     *     response=Response::HTTP_NOT_FOUND,
+     *     description="Not found",
+     *     @Model(type=ErrorResponse::class)
+     * )
+     * @SWG\Response(
+     *     response=Response::HTTP_INTERNAL_SERVER_ERROR,
+     *     description="Internal server error",
+     *     @Model(type=ErrorResponse::class)
+     * )
+     * @SWG\Tag(name="access-tokens")
+     *
+     * @param UserInterface       $user
+     * @param RefreshTokenRequest $request
+     *
+     * @return JsonResponse
+     * @throws ApiClientExceptionInterface
+     * @throws OAuthRequestException
+     * @throws RequestValidationException
+     * @throws NotFoundHttpException
+     */
+    public function refreshTokenAction(UserInterface $user, RefreshTokenRequest $request): JsonResponse
+    {
+        try {
+            $response = $this->accessTokenService->refreshToken($user, $request->getCharacterId());
+        } catch (EntityNotFoundException $e) {
+            throw new NotFoundHttpException('Character not found');
+        }
+
+        return $this->createJsonResponse($this->responseFactory->createAccessTokenResponse($response));
     }
 }

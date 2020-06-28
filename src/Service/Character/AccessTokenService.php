@@ -118,7 +118,7 @@ class AccessTokenService implements AccessTokenServiceInterface
     {
         $characterToken = $this->characterTokenManager->getByUserAndCharacter($user, $characterId);
 
-        $tokens = $this->oauthService->refreshToken($characterId);
+        $tokens = $this->oauthService->refreshToken($characterToken->getRefreshToken());
         $characterToken->setAccessToken($tokens->getAccessToken());
         $this->characterTokenManager->save($characterToken);
 
