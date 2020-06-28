@@ -34,7 +34,7 @@ class CharacterResponse
      *
      * @Assert\NotBlank()
      *
-     * @SWG\Property(title="EVE Character id", example="1234567", type="string")
+     * @SWG\Property(title="EVE Character id", example=1234567, type="integer")
      */
     protected int $characterId;
 
