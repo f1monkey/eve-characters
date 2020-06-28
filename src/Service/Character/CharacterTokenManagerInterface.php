@@ -59,4 +59,9 @@ interface CharacterTokenManagerInterface
      * @param CharacterToken $characterToken
      */
     public function save(CharacterToken $characterToken): void;
+
+    /**
+     * @param CharacterToken $characterToken
+     */
+    public function delete(CharacterToken $characterToken): void;
 }
