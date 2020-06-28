@@ -169,4 +169,69 @@ class CharacterController
             $this->characterResponseFactory->createCharacterResponse($characterToken->getCharacter())
         );
     }
+
+    /**
+     * @Route("/{characterId}", name="delete", methods={Request::METHOD_DELETE}, requirements={"id":RegexEnum::UUID_V4})
+     *
+     * @SWG\Parameter(
+     *     in="header",
+     *     name="Authorization",
+     *     description="Authorization header",
+     *     type="string",
+     *     required=true
+     * )
+     * @SWG\Parameter(
+     *     in="path",
+     *     name="characterId",
+     *     description="Character ID",
+     *     type="string",
+     *     required=true
+     * )
+     * @SWG\Response(
+     *     response=Response::HTTP_OK,
+     *     description="Deleted character",
+     *     @Model(type=CharacterResponse::class)
+     * )
+     * @SWG\Response(
+     *     response=Response::HTTP_BAD_REQUEST,
+     *     description="Bad Request",
+     *     @Model(type=ErrorResponse::class)
+     * )
+     * @SWG\Response(
+     *     response=Response::HTTP_UNAUTHORIZED,
+     *     description="Unauthorized",
+     *     @Model(type=ErrorResponse::class)
+     * )
+     *
+     * @SWG\Response(
+     *     response=Response::HTTP_NOT_FOUND,
+     *     description="Not found",
+     *     @Model(type=ErrorResponse::class)
+     * )
+     * @SWG\Response(
+     *     response=Response::HTTP_INTERNAL_SERVER_ERROR,
+     *     description="Internal server error",
+     *     @Model(type=ErrorResponse::class)
+     * )
+     * @SWG\Tag(name="characters")
+     *
+     * @param UserInterface $user
+     * @param string        $characterId
+     *
+     * @return JsonResponse
+     * @throws NotFoundHttpException
+     */
+    public function characterDeleteAction(UserInterface $user, string $characterId): JsonResponse
+    {
+        try {
+            $characterToken = $this->characterTokenManager->getByUserAndCharacter($user, $characterId);
+            $this->characterTokenManager->delete($characterToken);
+        } catch (EntityNotFoundException $e) {
+            throw new NotFoundHttpException(sprintf('Character #%s not found', $characterId));
+        }
+
+        return $this->createJsonResponse(
+            $this->characterResponseFactory->createCharacterResponse($characterToken->getCharacter())
+        );
+    }
 }

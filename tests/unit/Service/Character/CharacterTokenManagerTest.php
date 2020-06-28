@@ -172,4 +172,46 @@ class CharacterTokenManagerTest extends Unit
 
         static::assertSame($expected, $result->toArray());
     }
+
+    /**
+     * @throws Exception
+     */
+    public function testCanSaveCharacterToken()
+    {
+        /** @var CharacterToken $characterToken */
+        $characterToken = $this->makeEmpty(CharacterToken::class);
+        /** @var CharacterTokenFactoryInterface $factory */
+        $factory = $this->makeEmpty(CharacterTokenFactoryInterface::class);
+        /** @var CharacterTokenRepository $repository */
+        $repository = $this->makeEmpty(CharacterTokenRepository::class,);
+        /** @var EntityManagerInterface $em */
+        $em = $this->makeEmpty(EntityManagerInterface::class, [
+            'persist' => Expected::once(),
+            'flush' => Expected::once()
+        ]);
+
+        $manager = new CharacterTokenManager($factory, $repository, $em);
+        $manager->save($characterToken);
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function testCanDeleteCharacterToken()
+    {
+        /** @var CharacterToken $characterToken */
+        $characterToken = $this->makeEmpty(CharacterToken::class);
+        /** @var CharacterTokenFactoryInterface $factory */
+        $factory = $this->makeEmpty(CharacterTokenFactoryInterface::class);
+        /** @var CharacterTokenRepository $repository */
+        $repository = $this->makeEmpty(CharacterTokenRepository::class,);
+        /** @var EntityManagerInterface $em */
+        $em = $this->makeEmpty(EntityManagerInterface::class, [
+            'remove' => Expected::once(),
+            'flush' => Expected::once()
+        ]);
+
+        $manager = new CharacterTokenManager($factory, $repository, $em);
+        $manager->delete($characterToken);
+    }
 }

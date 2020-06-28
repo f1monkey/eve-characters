@@ -148,4 +148,13 @@ class CharacterTokenManager implements CharacterTokenManagerInterface
         $this->em->persist($characterToken);
         $this->em->flush();
     }
+
+    /**
+     * @param CharacterToken $characterToken
+     */
+    public function delete(CharacterToken $characterToken): void
+    {
+        $this->em->remove($characterToken);
+        $this->em->flush();
+    }
 }
