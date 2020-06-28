@@ -3,7 +3,11 @@ declare(strict_types=1);
 
 namespace App\Controller\V1;
 
-use App\Dto\Api\V1\Response\CharacterListResponse;
+use App\Dto\Api\V1\Response\Character\CharacterListResponse;
+use App\Entity\CharacterToken;
+use App\Factory\Api\V1\CharacterResponseFactoryInterface;
+use App\Service\Character\CharacterTokenManagerInterface;
+use Doctrine\Common\Collections\ArrayCollection;
 use F1Monkey\RequestHandleBundle\Dto\ErrorResponse;
 use Nelmio\ApiDocBundle\Annotation\Model;
 use Swagger\Annotations as SWG;
@@ -11,6 +15,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Class CharacterController
@@ -21,6 +26,33 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class CharacterController
 {
+    use ResponseSerializeTrait;
+
+    /**
+     * @var CharacterTokenManagerInterface
+     */
+    protected CharacterTokenManagerInterface $characterTokenManager;
+
+    /**
+     * @var CharacterResponseFactoryInterface
+     */
+    protected CharacterResponseFactoryInterface $characterResponseFactory;
+
+    /**
+     * CharacterController constructor.
+     *
+     * @param CharacterTokenManagerInterface    $characterTokenManager
+     * @param CharacterResponseFactoryInterface $characterResponseFactory
+     */
+    public function __construct(
+        CharacterTokenManagerInterface $characterTokenManager,
+        CharacterResponseFactoryInterface $characterResponseFactory
+    )
+    {
+        $this->characterTokenManager    = $characterTokenManager;
+        $this->characterResponseFactory = $characterResponseFactory;
+    }
+
     /**
      * @Route("", name="list", methods={Request::METHOD_GET})
      *
@@ -53,12 +85,20 @@ class CharacterController
      * )
      * @SWG\Tag(name="characters")
      *
-     * @param Request $request
+     * @param UserInterface $user
      *
      * @return JsonResponse
      */
-    public function characterListAction(Request $request): JsonResponse
+    public function characterListAction(UserInterface $user): JsonResponse
     {
-        return new JsonResponse();
+        $characters = new ArrayCollection();
+        /** @var CharacterToken $characterToken */
+        foreach ($this->characterTokenManager->getByUser($user) as $characterToken) {
+            $characters->add($characterToken->getCharacter());
+        }
+
+        return $this->createJsonResponse(
+            $this->characterResponseFactory->createCharacterListResponse($characters)
+        );
     }
 }
