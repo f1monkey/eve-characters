@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Dto\Api\V1\Request\CharacterAdd;
+namespace App\Dto\Api\V1\Request\AccessToken;
 
 use App\Dto\Api\RequestInterface;
 use Doctrine\Common\Collections\Collection;
-use F1Monkey\EveEsiBundle\Dto\Scope;
+use F1monkey\EveEsiBundle\Dto\Scope;
 use JMS\Serializer\Annotation as Serializer;
 use Swagger\Annotations as SWG;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -13,7 +13,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Class GetRedirectUrlRequest
  *
- * @package App\Dto\Api\V1\Request\CharacterAdd
+ * @package App\Dto\Api\V1\Request\AccessToken
  */
 class GetRedirectUrlRequest implements RequestInterface
 {

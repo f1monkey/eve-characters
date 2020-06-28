@@ -1,14 +1,14 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Dto\Api\V1\Response\CharacterAdd;
+namespace App\Dto\Api\V1\Response\AccessToken;
 
 use JMS\Serializer\Annotation as Serializer;
 
 /**
  * Class GetRedirectUrlResponse
  *
- * @package App\Dto\Api\V1\Response\CharacterAdd
+ * @package App\Dto\Api\V1\Response\AccessToken
  */
 class GetRedirectUrlResponse
 {

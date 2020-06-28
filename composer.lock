@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "040e405a9373692fd331ef5b0f0e2ce3",
+    "content-hash": "655a5ad83df44911bfb99a97e9c2c2c4",
     "packages": [
         {
             "name": "baldinof/roadrunner-bundle",
@@ -1979,16 +1979,16 @@
         },
         {
             "name": "f1monkey/eve-esi-bundle",
-            "version": "dev-master",
+            "version": "0.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/f1monkey/eve-esi-bundle.git",
-                "reference": "828f250578c30604b7de7c489447a2907fc6268c"
+                "reference": "14945bbc697809a92463ff41a72362e94a24b109"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/f1monkey/eve-esi-bundle/zipball/828f250578c30604b7de7c489447a2907fc6268c",
-                "reference": "828f250578c30604b7de7c489447a2907fc6268c",
+                "url": "https://api.github.com/repos/f1monkey/eve-esi-bundle/zipball/14945bbc697809a92463ff41a72362e94a24b109",
+                "reference": "14945bbc697809a92463ff41a72362e94a24b109",
                 "shasum": ""
             },
             "require": {
@@ -1998,11 +1998,11 @@
                 "jms/serializer-bundle": "^3.6",
                 "php": "^7.4",
                 "sabre/uri": "^2.2",
-                "symfony/dependency-injection": "^5.0",
-                "symfony/framework-bundle": "^5.0",
-                "symfony/http-kernel": "^5.0",
-                "symfony/translation": "^5.1",
-                "symfony/validator": "^5.0"
+                "symfony/dependency-injection": "^4.0|^5.0",
+                "symfony/framework-bundle": "^4.0|^5.0",
+                "symfony/http-kernel": "^4.0|^5.0",
+                "symfony/translation": "^4.0|^5.0",
+                "symfony/validator": "^4.0|^5.0"
             },
             "require-dev": {
                 "codeception/codeception": "^4.1",
@@ -2018,14 +2018,10 @@
             "type": "symfony-bundle",
             "autoload": {
                 "psr-4": {
-                    "F1Monkey\\EveEsiBundle\\": "src"
+                    "F1monkey\\EveEsiBundle\\": "src"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "F1Monkey\\EveEsiBundle\\Tests\\": "tests"
-                }
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -2040,11 +2036,7 @@
                 "esi",
                 "eve"
             ],
-            "support": {
-                "source": "https://github.com/f1monkey/eve-esi-bundle/tree/master",
-                "issues": "https://github.com/f1monkey/eve-esi-bundle/issues"
-            },
-            "time": "2020-06-24T18:24:11+00:00"
+            "time": "2020-06-27T21:11:13+00:00"
         },
         {
             "name": "f1monkey/monolog-extensions",
@@ -11521,9 +11513,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "f1monkey/eve-esi-bundle": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

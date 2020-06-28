@@ -32,7 +32,7 @@ jobs:
                 run: composer install --prefer-dist --no-progress --no-suggest
 
             -   name: phpstan
-                run: vendor/bin/phpstan analyze --level=max src
+                run: composer phpstan
 
     test:
         name: Codeception
@@ -82,4 +82,4 @@ jobs:
                 run: composer install --prefer-dist --no-progress --no-suggest
 
             -   name: Codeception
-                run: vendor/bin/codecept run
+                run: composer test
