@@ -16,10 +16,10 @@ services:
         volumes:
             - .:/srv:rw
         networks:
-            auth:
+            local:
             f1monkey:
                 aliases:
-                    - f1monkey-php
+                    - f1monkey-eve-characters
     postgres:
         image: postgres:12.3-alpine
         environment:
@@ -29,7 +29,7 @@ services:
         volumes:
             - "db_data:/var/lib/postgresql/data"
         networks:
-            auth:
+            local:
 
     postgres_test:
         image: postgres:12.3-alpine
@@ -40,9 +40,9 @@ services:
         volumes:
             - "db_test_data:/var/lib/postgresql/data"
         networks:
-            auth:
+            local:
 
 networks:
     f1monkey:
         external: true
-    auth:
+    local:
