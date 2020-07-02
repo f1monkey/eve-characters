@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b65f7659d6ae70d395d814ae65085450",
+    "content-hash": "7af52d9d642b81fc4a47c8d601d5322f",
     "packages": [
         {
             "name": "baldinof/roadrunner-bundle",
@@ -1979,16 +1979,16 @@
         },
         {
             "name": "f1monkey/eve-esi-bundle",
-            "version": "0.1.1",
+            "version": "0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/f1monkey/eve-esi-bundle.git",
-                "reference": "14945bbc697809a92463ff41a72362e94a24b109"
+                "reference": "9d6ca4120406b4b9edf8a126f36884825bd79121"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/f1monkey/eve-esi-bundle/zipball/14945bbc697809a92463ff41a72362e94a24b109",
-                "reference": "14945bbc697809a92463ff41a72362e94a24b109",
+                "url": "https://api.github.com/repos/f1monkey/eve-esi-bundle/zipball/9d6ca4120406b4b9edf8a126f36884825bd79121",
+                "reference": "9d6ca4120406b4b9edf8a126f36884825bd79121",
                 "shasum": ""
             },
             "require": {
@@ -1999,6 +1999,7 @@
                 "php": "^7.4",
                 "sabre/uri": "^2.2",
                 "symfony/dependency-injection": "^4.0|^5.0",
+                "symfony/event-dispatcher": "^4.3|^5.0",
                 "symfony/framework-bundle": "^4.0|^5.0",
                 "symfony/http-kernel": "^4.0|^5.0",
                 "symfony/translation": "^4.0|^5.0",
@@ -2036,7 +2037,7 @@
                 "esi",
                 "eve"
             ],
-            "time": "2020-06-27T21:11:13+00:00"
+            "time": "2020-07-02T16:02:43+00:00"
         },
         {
             "name": "f1monkey/monolog-extensions",

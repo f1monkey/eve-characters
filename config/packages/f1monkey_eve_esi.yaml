@@ -1,4 +1,5 @@
 f1monkey_eve_esi:
+    user_agent: 'f1monkey-eve-characters/1.0'
     oauth:
         callback_url: '%env(EVE_ESI_CALLBACK_URL)%'
         client_id: '%env(EVE_ESI_CLIENT_ID)%'
